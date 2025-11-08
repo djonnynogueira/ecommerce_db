@@ -256,26 +256,14 @@ Q18: Resumo executivo (Dashboard)
 Utiliza: UNION ALL, agregações
 
 ### 📁 Estrutura do Projeto
-ecommerce-database/
-│
 
-├── README.md # Este arquivo
+[Script de criação do banco](schema/create_database.sql)
 
-├── schema/
+[Script de inserção de dados de teste](data/insert_data.sql)
 
-│ └── create_database.sql # Script de criação do banco
+[Queries de análise de e-commerce](queries/queries.sql)
 
-├── data/
-
-│ └── insert_data.sql # Script de inserção de dados de teste
-
-├── queries/
-
-│ ├── queries.sql # Queries de análise de e-commerce
-
-└── docs/
-
-| ├── modelo_eer.png                # Diagrama EER
+[Diagrama EER](docs/modelo_eer.png)
 
 ### 🚀 Como Executar o Projeto
 - Pré-requisitos
