@@ -1,11 +1,10 @@
-# ecommerce_db
-🛒 Projeto Lógico de Banco de Dados - E-commerce
+# 🛒 Projeto Lógico de Banco de Dados - E-commerce
 
-📋 Descrição do Projeto
+## 📋 Descrição do Projeto
 
 Este projeto implementa o modelo lógico de banco de dados para um sistema de e-commerce completo, desenvolvido como parte do desafio de projeto da DIO. O esquema foi construído a partir da modelagem conceitual (modelo EER), aplicando técnicas de mapeamento para o modelo relacional e incorporando refinamentos específicos solicitados.
 
-🎯 Objetivo do Desafio
+### 🎯 Objetivo do Desafio
 
 Replicar a modelagem do projeto lógico de banco de dados para o cenário de e-commerce, aplicando:
 
@@ -15,14 +14,13 @@ Replicar a modelagem do projeto lógico de banco de dados para o cenário de e-c
 ✅ Refinamentos específicos do modelo conceitual
 ✅ Criação de queries SQL complexas para análise de dados
 
-🏗️ Refinamentos Implementados
+### 🏗️ Refinamentos Implementados
 1. Cliente PF e PJ - Abordagem Single Table Inheritance
 
 Requisito: "Uma conta pode ser PJ ou PF, mas não pode ter as duas informações"
 
 Solução Implementada:
 ```Sql
-Copiar
 CREATE TABLE Cliente (
     idCliente INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
@@ -96,14 +94,7 @@ CREATE TABLE Entrega (
 );
 ```
 
-Funcionalidades:
-
-- ✅ Rastreamento completo da entrega
-- ✅ Código único de rastreio
-- ✅ Controle de prazos (previsto vs realizado)
-- ✅ Histórico de status
-
-📊 Modelo Lógico - Entidades e Relacionamentos
+### 📊 Modelo Lógico - Entidades e Relacionamentos
 
 Entidades Principais
 1. Cliente
@@ -149,7 +140,7 @@ Campos: idTerceiro_Vendedor, RazaoSocial, Local, CNPJ
 Tabela associativa (N:M) entre Terceiro_Vendedor e Produto
 Campos: Terceiro_Vendedor_idTerceiro_Vendedor, Produto_idProduto, Quantidade
 
-Diagrama de Relacionamentos
+### Diagrama de Relacionamentos
 
 Cliente (1) ----< (N) Pedido
 
@@ -165,9 +156,9 @@ Produto (N) ----< (M) Fornecedor [via Disponibilizando_Produto]
 
 Produto (N) ----< (M) Terceiro_Vendedor [via Produtos_por_Vendedor]
 
-🔍 Queries SQL Implementadas
+### 🔍 Queries SQL Implementadas
 
-O projeto inclui 18 queries complexas que respondem às seguintes perguntas de negócio:
+O projeto inclui 18 queries que respondem às seguintes perguntas de negócio:
 
 Análise de Clientes
 
@@ -264,11 +255,8 @@ Q18: Resumo executivo (Dashboard)
 
 Utiliza: UNION ALL, agregações
 
-Visão geral do negócio
-📁 Estrutura do Projeto
-
+### 📁 Estrutura do Projeto
 ecommerce-database/
-
 │
 
 ├── README.md # Este arquivo
@@ -277,159 +265,79 @@ ecommerce-database/
 
 │ └── create_database.sql # Script de criação do banco
 
-│
-
 ├── data/
 
 │ └── insert_data.sql # Script de inserção de dados de teste
 
-│
-
 ├── queries/
 
-│ ├── 01_analise_clientes.sql # Queries de análise de clientes
-
-│ ├── 02_analise_produtos.sql # Queries de análise de produtos
-
-│ ├── 03_analise_fornecedores.sql # Queries de fornecedores/vendedores
-
-│ ├── 04_analise_pedidos.sql # Queries de pedidos/entregas
-
-│ └── 05_analise_financeira.sql # Queries financeiras
-
-│
+│ ├── queries.sql # Queries de análise de e-commerce
 
 └── docs/
 
-├── modelo_eer.png                # Diagrama EER
+| ├── modelo_eer.png                # Diagrama EER
 
-└── modelo_logico.png             # Diagrama do modelo lógico
+### 🚀 Como Executar o Projeto
+- Pré-requisitos
+- MySQL 8.0 ou superior
+- Cliente MySQL (MySQL Workbench, DBeaver, ou linha de comando)
 
-🚀 Como Executar o Projeto
-Pré-requisitos
-MySQL 8.0 ou superior
-Cliente MySQL (MySQL Workbench, DBeaver, ou linha de comando)
 Passo 1: Criar o Banco de Dados
-Bash
-Copiar
+```Bash
+
 mysql -u seu_usuario -p < schema/create_database.sql
-
+```
 Passo 2: Inserir Dados de Teste
-Bash
-Copiar
+```Bash
+
 mysql -u seu_usuario -p ecommerce < data/insert_data.sql
-
+```
 Passo 3: Executar as Queries
-Bash
-Copiar
+```Bash
+
 # Executar todas as queries
-mysql -u seu_usuario -p ecommerce < queries/01_analise_clientes.sql
-mysql -u seu_usuario -p ecommerce < queries/02_analise_produtos.sql
-# ... e assim por diante
+mysql -u seu_usuario -p ecommerce < queries/queries.sql
+```
 
-
-Ou executar queries individuais através do seu cliente MySQL preferido.
-
-🎓 Conceitos Aplicados
+### 🎓 Conceitos Aplicados
 Modelagem de Dados
-✅ Mapeamento de modelo EER para modelo relacional
-✅ Normalização (3FN)
-✅ Identificação de entidades e relacionamentos
-✅ Definição de chaves primárias e estrangeiras
-Constraints e Integridade
-✅ PRIMARY KEY - Identificação única de registros
-✅ FOREIGN KEY - Integridade referencial
-✅ UNIQUE - Unicidade de valores (CPF, CNPJ, Código de Rastreio)
-✅ CHECK - Validação de regras de negócio
-✅ NOT NULL - Obrigatoriedade de campos
-✅ DEFAULT - Valores padrão
+- ✅ Mapeamento de modelo EER para modelo relacional
+- ✅ Normalização (3FN)
+- ✅ Identificação de entidades e relacionamentos
+- ✅ Definição de chaves primárias e estrangeiras
+- ✅ Constraints e Integridade
+- ✅ PRIMARY KEY - Identificação única de registros
+- ✅ FOREIGN KEY - Integridade referencial
+- ✅ UNIQUE - Unicidade de valores (CPF, CNPJ, Código de Rastreio)
+- ✅ CHECK - Validação de regras de negócio
+- ✅ NOT NULL - Obrigatoriedade de campos
+- ✅ DEFAULT - Valores padrão
+
 SQL Avançado
-✅ SELECT com múltiplas tabelas
-✅ WHERE com condições complexas
-✅ JOIN (INNER, LEFT, múltiplos)
-✅ GROUP BY e HAVING
-✅ ORDER BY com múltiplos critérios
-✅ Funções de agregação (COUNT, SUM, AVG, MIN, MAX)
-✅ Funções de string (CONCAT, GROUP_CONCAT)
-✅ Funções de data (DATEDIFF, TIMESTAMPDIFF, DATE_SUB)
-✅ CASE para atributos derivados
-✅ Subqueries
-✅ UNION e UNION ALL
-💡 Decisões de Design
-1. Por que Single Table Inheritance para Cliente?
+- ✅ SELECT com múltiplas tabelas
+- ✅ WHERE com condições complexas
+- ✅ JOIN (INNER, LEFT, múltiplos)
+- ✅ GROUP BY e HAVING
+- ✅ ORDER BY com múltiplos critérios
+- ✅ Funções de agregação (COUNT, SUM, AVG, MIN, MAX)
+- ✅ Funções de string (CONCAT, GROUP_CONCAT)
+- ✅ Funções de data (DATEDIFF, TIMESTAMPDIFF, DATE_SUB)
+- ✅ CASE para atributos derivados
+- ✅ Subqueries
+- ✅ UNION e UNION ALL
 
-Alternativas Consideradas:
-
-Class Table Inheritance: Tabelas separadas (Cliente_PF, Cliente_PJ)
-Concrete Table Inheritance: Tabelas completamente separadas
-
-Escolha: Single Table Inheritance
-
-Justificativa:
-
-90% das queries acessam dados de cliente sem precisar diferenciar tipo
-Performance superior (sem JOINs extras)
-Simplicidade no código da aplicação
-Constraint CHECK garante integridade dos dados
-Escalabilidade para alto volume de transações
-2. Relacionamento N:M para Pagamentos
-
-Permitir múltiplas formas de pagamento oferece:
-
-Flexibilidade ao cliente (ex: R$ 2000 no cartão + R$ 1000 em PIX)
-Melhor experiência de usuário
-Rastreabilidade de cada transação
-Suporte a pagamentos parcelados
-3. Entrega como Entidade Separada
-
-Ao invés de campos na tabela Pedido:
-
-Separação de responsabilidades
-Facilita expansão futura (múltiplas entregas por pedido)
-Código de rastreio único e indexado
-Histórico completo de datas
-📊 Dados de Teste
-
-O projeto inclui dados de teste realistas:
-
-9 Clientes (5 PF + 4 PJ)
-17 Produtos em 5 categorias
-12 Pedidos com diferentes status
-4 Estoques em diferentes locais
-10 Fornecedores
-4 Vendedores Terceiros
-13 Pagamentos (incluindo pedidos com múltiplas formas)
-9 Entregas com códigos de rastreio
-🔧 Melhorias Futuras
-[ ] Implementar sistema de avaliações de produtos
-[ ] Adicionar histórico de preços
-[ ] Criar sistema de cupons de desconto
-[ ] Implementar programa de fidelidade/cashback
-[ ] Adicionar sistema de devoluções
-[ ] Criar views materializadas para relatórios
-[ ] Implementar particionamento de tabelas grandes
-[ ] Adicionar full-text search para produtos
-[ ] Sistema de notificações de entrega
-[ ] Integração com APIs de rastreamento
-📚 Referências
-Modelagem de Dados - Conceitual, Lógica e Física
-MySQL 8.0 Reference Manual
-Database Design Best Practices
-SQL Performance Tuning
-👨‍💻 Autor
+### 📚 Referências
+- Modelagem de Dados - Conceitual, Lógica e Física
+- MySQL 8.0 Reference Manual
+- Database Design Best Practices
+- SQL Performance Tuning
 
 Desenvolvido como parte do Desafio de Projeto - Modelagem de Banco de Dados para E-commerce da Digital Innovation One (DIO).
 
-📝 Licença
-
-Este projeto é de código aberto e está disponível para fins educacionais.
-
 ⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
 
-🔗 Links Úteis:
+### 🔗 Links Úteis:
 
-Documentação MySQL
-SQL Tutorial
-Database Design Guide
-
-Nota: Este README documenta todas as decisões de design, justificativas técnicas e implementações realizadas no projeto, servindo como referência completa para avaliação e estudos futuros.
+- [Documentação MySQL](https://dev.mysql.com/doc/)
+- [SQL Tutorial](https://www.w3schools.com/sql/)
+- [Database Design Guide](https://www.lucidchart.com/pages/database-diagram/database-design)
